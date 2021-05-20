@@ -58,11 +58,6 @@ class SigninButton extends Component {
 
 export default function LandingPage() {
   return (
-  <Box
-    overflow="hidden"
-    css={{
-    }}
-  >
     <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }} spacing={0}>
       <Flex p={8} flex={1} align={'center'} justify={'center'} style={{
         background: 'black'
@@ -81,6 +76,5 @@ export default function LandingPage() {
         </Stack>
       </Flex>
     </Stack>
-    </Box>
   )
 }
