@@ -1,5 +1,5 @@
 
-import { signIn, signOut, useSession } from 'next-auth/client'
+import { signOut, useSession } from 'next-auth/client'
 import Landing from '../components/landing/'
 
 export default function Home() {

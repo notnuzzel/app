@@ -14,7 +14,7 @@ export default class MyDocument extends Document {
         <Head>
           <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet"/>
         </Head>
-        <body>
+        <body style={{ overflow: 'hidden' }}>
           <Main/>
           <NextScript/>
         </body>

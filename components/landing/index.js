@@ -3,9 +3,10 @@ import {
   Button,
   Flex,
   Heading,
-  Stack
+  Stack,
+  Box
 } from '@chakra-ui/react'
-import { Component } from 'react'
+import { Component, useState } from 'react'
 import { signIn } from 'next-auth/client'
 import { ArrowForwardIcon } from "@chakra-ui/icons"
 import Reward from 'react-rewards'
@@ -18,21 +19,25 @@ class SigninButton extends Component {
 
   constructor(props) {
     super(props)
+    this.state = { isLoading: false }
     this.handleClick = this.handleClick.bind(this)
   }
 
   async handleClick() {
+    this.setState({ isLoading: true })
     this.reward.rewardMe()
-    await timeout(1000)
+    await timeout(1500)
     signIn('twitter')
   }
 
   render() {
+    const text = "Sign in with Twitter"
     return <Reward 
       type='emoji' 
       ref={(ref) => { this.reward = ref }}
       config={{
-        emoji: ['🦔']
+        emoji: ['🦔'],
+        elementCount: 4
       }}
       >
       <Button
@@ -41,15 +46,23 @@ class SigninButton extends Component {
         _hover={{ color: "black", background: "white" }}
         color="white"
         onClick={this.handleClick}
+        isLoading={this.state.isLoading}
+        loadingText={text}
+        spinnerPlacement="end"
       >
-        Sign in with Twitter
+        {text}
       </Button>
     </Reward>
   }
 }
 
-export default function SplitScreen() {
+export default function LandingPage() {
   return (
+  <Box
+    overflow="hidden"
+    css={{
+    }}
+  >
     <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }} spacing={0}>
       <Flex p={8} flex={1} align={'center'} justify={'center'} style={{
         background: 'black'
@@ -68,5 +81,6 @@ export default function SplitScreen() {
         </Stack>
       </Flex>
     </Stack>
-  );
+    </Box>
+  )
 }
